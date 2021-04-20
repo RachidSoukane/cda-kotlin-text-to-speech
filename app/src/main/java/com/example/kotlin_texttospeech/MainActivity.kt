@@ -27,9 +27,11 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         buttonTime =this.button_time
 
         buttonSpeak!!.isEnabled =false
+
         tts = TextToSpeech(applicationContext, this)
 
         buttonSpeak!!.setOnClickListener { speakOut() }
+        buttonTime!!.setOnClickListener { timeOut() }
     }
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     private fun speakOut() {
@@ -57,7 +59,7 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
         if (status == TextToSpeech.SUCCESS) {
             // set US English as language for tts
-            val result = tts!!.setLanguage(Locale.US)
+            val result = tts!!.setLanguage(Locale.FRANCE)
 
             if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
                 Log.e("TTS","The Language specified is not supported!")
